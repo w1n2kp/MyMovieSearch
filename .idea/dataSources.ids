@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - MovieSearch@192.168.1.1" uuid="5cdd5256-2067-4655-9615-72bf1bf01cfd">
+    <database-info product="MySQL" version="5.5.40-0ubuntu0.12.04.1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.34 ( Revision: jess.balint@oracle.com-20141014163213-wqbwpf1ok2kvo1om )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <schema name="" catalog="MovieSearch"/>
+    <table name="Actor" schema="" catalog="MovieSearch" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="Country" schema="" catalog="MovieSearch" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="Director" schema="" catalog="MovieSearch" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="Genre" schema="" catalog="MovieSearch" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="genre" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="Movies" schema="" catalog="MovieSearch" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="title" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="year" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="plot" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="original_title" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="rating" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="filename" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="movie_actor" schema="" catalog="MovieSearch" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="movie_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="actor_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="movie_country" schema="" catalog="MovieSearch" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="movie_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="country_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="movie_director" schema="" catalog="MovieSearch" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="movie_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="director_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="movie_genre" schema="" catalog="MovieSearch" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="movie_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="genre_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <procedure name="func_get_split_string" schema="" catalog="MovieSearch" type="2">
+      <prototype>
+        <parameter name="f_string" sqlType="VARCHAR" precision="1000" scale="0" nullable="true" jdbcType="12" type="1" index="1"/>
+        <parameter name="f_delimiter" sqlType="VARCHAR" precision="5" scale="0" nullable="true" jdbcType="12" type="1" index="2"/>
+        <parameter name="f_order" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" type="1" index="3"/>
+        <parameter name="" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" type="5" index="0"/>
+      </prototype>
+    </procedure>
+    <procedure name="func_get_split_string_total" schema="" catalog="MovieSearch" type="2">
+      <prototype>
+        <parameter name="f_string" sqlType="VARCHAR" precision="1000" scale="0" nullable="true" jdbcType="12" type="1" index="1"/>
+        <parameter name="f_delimiter" sqlType="VARCHAR" precision="5" scale="0" nullable="true" jdbcType="12" type="1" index="2"/>
+        <parameter name="" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" type="5" index="0"/>
+      </prototype>
+    </procedure>
+    <procedure name="sp_create_movie" schema="" catalog="MovieSearch" type="1">
+      <prototype>
+        <parameter name="title" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" type="1" index="1"/>
+        <parameter name="original_title" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" type="1" index="2"/>
+        <parameter name="year" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4" type="1" index="3"/>
+        <parameter name="plot" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1" type="1" index="4"/>
+        <parameter name="rating" sqlType="FLOAT" precision="12" scale="0" nullable="true" jdbcType="7" type="1" index="5"/>
+        <parameter name="filename" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" type="1" index="6"/>
+        <parameter name="actors" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" type="1" index="7"/>
+        <parameter name="genres" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" type="1" index="8"/>
+        <parameter name="directors" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" type="1" index="9"/>
+        <parameter name="countries" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12" type="1" index="10"/>
+      </prototype>
+    </procedure>
+  </data-source>
+</component>

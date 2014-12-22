@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <appSettings>
+        <add key="index_path" value="/tmp/movie.idx" />
+        <add key="library_path" value="/mnt/movie" />
+        <add key="connection_string" value="jdbc:mysql://192.168.1.1:3306/MovieSearch?user=sa&amp;password=9Qt5mhlx&amp;useUnicode=true&amp;characterEncoding=UTF8" />
+    </appSettings>
+</config>

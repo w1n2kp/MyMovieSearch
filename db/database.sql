@@ -1,0 +1,54 @@
+CREATE TABLE Actor
+(
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    name VARCHAR(50)
+);
+CREATE TABLE Country
+(
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    name VARCHAR(50) NOT NULL
+);
+CREATE TABLE Director
+(
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    name VARCHAR(50) NOT NULL
+);
+CREATE TABLE Genre
+(
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    genre VARCHAR(50) NOT NULL
+);
+CREATE TABLE Movies
+(
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    year INT,
+    plot LONGTEXT,
+    original_title VARCHAR(255),
+    rating REAL,
+    filename VARCHAR(255)
+);
+CREATE TABLE movie_actor
+(
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    movie_id INT NOT NULL,
+    actor_id INT NOT NULL
+);
+CREATE TABLE movie_country
+(
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    movie_id INT NOT NULL,
+    country_id INT NOT NULL
+);
+CREATE TABLE movie_director
+(
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    movie_id INT NOT NULL,
+    director_id INT NOT NULL
+);
+CREATE TABLE movie_genre
+(
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    movie_id INT NOT NULL,
+    genre_id INT NOT NULL
+);

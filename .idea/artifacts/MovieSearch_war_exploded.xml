@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" build-on-make="true" name="MovieSearch:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/MovieSearch_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="MovieSearch/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="MovieSearch" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="application" name="jdom" />
+          <element id="library" level="application" name="lucene-4.10.2" />
+          <element id="library" level="application" name="mysql-connector-java-5.1" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
