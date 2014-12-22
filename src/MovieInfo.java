@@ -37,6 +37,8 @@ public class MovieInfo {
             Statement statement = connection.createStatement();
             String sql = "";
             statement.executeQuery(sql);
+
+            // add some modifications
         } catch (Exception e) {}
 
     }
