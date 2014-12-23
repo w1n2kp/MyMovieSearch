@@ -49,8 +49,8 @@ public class MovieImporter extends HttpServlet {
 
         File folder = new File(path);
         File[] files = folder.listFiles();
-        for (File f:files) {
-            if (f.isDirectory()){
+        for (File f : files) {
+            if (f.isDirectory()) {
                 findFiles(f.getAbsolutePath(), out);
             } else {
 

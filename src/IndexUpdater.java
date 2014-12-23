@@ -88,7 +88,12 @@ public class IndexUpdater extends HttpServlet {
                     doc.add(new Field("title", nfo.Title, TextField.TYPE_STORED));
                     doc.add(new Field("plot", nfo.Plot, TextField.TYPE_STORED));
                     doc.add(new Field("year", String.valueOf(nfo.Year), TextField.TYPE_STORED));
-                    doc.add(new Field("originaltitle", nfo.OriginalTitle, TextField.TYPE_STORED));
+                    doc.add(new Field("original_title", nfo.OriginalTitle, TextField.TYPE_STORED));
+                    doc.add(new Field("rating", nfo.Rating.toString(), TextField.TYPE_STORED));
+                    doc.add(new Field("actors", nfo.CombineProperties(nfo.Actors), TextField.TYPE_STORED));
+                    doc.add(new Field("directors", nfo.CombineProperties(nfo.Directors), TextField.TYPE_STORED));
+                    doc.add(new Field("countries", nfo.CombineProperties(nfo.Countries), TextField.TYPE_STORED));
+                    doc.add(new Field("genres", nfo.CombineProperties(nfo.Genres), TextField.TYPE_STORED));
 
                     writer.addDocument(doc);
                     out.println(fn + "<br>");

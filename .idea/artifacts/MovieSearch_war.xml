@@ -3,6 +3,11 @@
     <output-path>$USER_HOME$/Desktop</output-path>
     <root id="archive" name="MovieSearch.war">
       <element id="artifact" artifact-name="MovieSearch:war exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="application" name="json-lib" />
+        </element>
+      </element>
     </root>
   </artifact>
 </component>

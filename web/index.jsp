@@ -6,11 +6,42 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <title>Movie Search Demo with Lucene & J2EE</title>
+  <style>
+    .title { font-size: 15pt; font-weight: bold}
+    .org_title {font-size: 10pt; color:gray}
+    .thumb_container { width: auto; text-align: center}
+    h2 {font-size:15pt; font-weight: bold}
+    .thumb_container { width:200px;}
+    .poster_thumb { height:220px; width: 150px}
+    span { font-size: 10pt; color: gray; }
+
+  </style>
   <script type="text/javascript" src="js/jquery.js"></script>
   <script type="text/javascript">
     $(document).ready(function() {
       $("#btnSearch").click(function() {
-        $("#display").load("search.do?q=" + $("#keyword").val(), function(data, status){});
+        $.getJSON("search.do?q=" + $("#keyword").val(), function(data, status){
+          var code = "<table id='container'>";
+          for (var n = 0; n < data.length; n++) {
+            i = data[n];
+
+            code += "<tr><td class='thumb_container'><img class='poster_thumb' src='poster.do?id=" + i.id + "'></td><td>" +
+                       "<table>" +
+                       "<tr><td><span class='title'>" + i.title + "</span> / <span class='org_title'>" + i.originalTitle + "</span> <span class='year'>" + i.year + "</span></td></tr>" +
+                       "<tr><td>类别：<span class='genres'>" + i.genres + "</span>" +
+                       " / 导演：<span class='directors'>" + i.directors + "</span>" +
+                       " / 演员：<span class='actors'>" + i.actors + "</span>" +
+                       " / 国家：<span class='countries'>" + i.countries + "</span></td></tr>" +
+                       "<tr><td class='plot' colspan='2'>" + i.plot + "</td></tr>" +
+                       "</table>" +
+                       "</td></tr>";
+
+
+
+          }
+
+          $("#display").html(code + "</table>");
+        });
       });
 
       $("#btnIndex").click(function() {

@@ -11,6 +11,7 @@
           <element id="library" level="application" name="jdom" />
           <element id="library" level="application" name="lucene-4.10.2" />
           <element id="library" level="application" name="mysql-connector-java-5.1" />
+          <element id="library" level="application" name="json-lib" />
         </element>
       </element>
     </root>

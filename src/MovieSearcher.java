@@ -1,5 +1,5 @@
-
-
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.cn.smart.SmartChineseAnalyzer;
 import org.apache.lucene.document.Document;
@@ -11,6 +11,7 @@ import org.apache.lucene.search.*;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.Version;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,6 +21,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Servlet implementation class MovieSearcher
@@ -105,23 +108,34 @@ public class MovieSearcher extends HttpServlet {
         Filter filter = null;
         TopDocs topDocs = searcher.search(query, filter, 1000);
 
+        List<MovieInfo> info = new ArrayList<MovieInfo>();
 
-        out.println("<table>");
+
         for (ScoreDoc scoreDoc: topDocs.scoreDocs) {
             int index = scoreDoc.doc;
-
             Document doc = searcher.doc(index);
-            out.println("<tr><td>");
-            out.println("<img src='poster.do?id=" + index + "' width='150px'>");
-            out.println("</td><td>");
-            out.println("<h2>" + doc.get("title") + "</h2><br>");
 
-            out.println("<p>" + doc.get("plot") + "</p>");
-            out.println("</td></tr>");
+            MovieInfo movieInfo = new MovieInfo();
+            movieInfo.Id = index;
+            movieInfo.filename = doc.get("filename");
+            movieInfo.Title = doc.get("title");
+            movieInfo.Poster = doc.get("poster");
+            movieInfo.OriginalTitle = doc.get("original_title");
+            movieInfo.Year = Integer.parseInt(doc.get("year"));
+            movieInfo.Rating = Double.parseDouble(doc.get("rating"));
+            movieInfo.Actors = movieInfo.SplitProperties(doc.get("actors"));
+            movieInfo.Genres = movieInfo.SplitProperties(doc.get("genres"));
+            movieInfo.Directors = movieInfo.SplitProperties(doc.get("directors"));
+            movieInfo.Countries = movieInfo.SplitProperties(doc.get("countries"));
+            movieInfo.Plot = doc.get("plot");
+
+            info.add(movieInfo);
 
         }
-        out.println("</table>");
 
+        JSONArray jsonArray = JSONArray.fromObject(info);
+
+        out.print(jsonArray);
 
     }
 

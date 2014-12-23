@@ -13,6 +13,7 @@ import java.util.List;
 
 
 public class MovieInfo {
+    int Id = 0;
     String connectionString = "";
     String filename = "";
     String Title = "";
@@ -29,6 +30,11 @@ public class MovieInfo {
     int Year = 1900;
 
 
+    public MovieInfo() {
+
+
+    }
+
     public MovieInfo(int id) {
         DatabaseService svc = DatabaseService.getInstance();
         Connection connection = svc.connect(this.connectionString);
@@ -41,6 +47,88 @@ public class MovieInfo {
             // add some modifications
         } catch (Exception e) {}
 
+    }
+
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int id) {
+        Id = id;
+    }
+
+
+    public String getTitle() {
+        return Title;
+    }
+
+    public void setTitle(String title) {
+        Title = title;
+    }
+
+    public String getPlot() {
+        return Plot;
+    }
+
+    public void setPlot(String plot) {
+        Plot = plot;
+    }
+
+    public String getOriginalTitle() {
+        return OriginalTitle;
+    }
+
+    public void setOriginalTitle(String originalTitle) {
+        OriginalTitle = originalTitle;
+    }
+
+
+    public Double getRating() {
+        return Rating;
+    }
+
+    public void setRating(Double rating) {
+        Rating = rating;
+    }
+
+    public List<String> getActors() {
+        return Actors;
+    }
+
+    public void setActors(List<String> actors) {
+        Actors = actors;
+    }
+
+    public List<String> getDirectors() {
+        return Directors;
+    }
+
+    public void setDirectors(List<String> directors) {
+        Directors = directors;
+    }
+
+    public List<String> getGenres() {
+        return Genres;
+    }
+
+    public void setGenres(List<String> genres) {
+        Genres = genres;
+    }
+
+    public List<String> getCountries() {
+        return Countries;
+    }
+
+    public void setCountries(List<String> countries) {
+        Countries = countries;
+    }
+
+    public int getYear() {
+        return Year;
+    }
+
+    public void setYear(int year) {
+        Year = year;
     }
 
     public MovieInfo(String filename) {
@@ -95,6 +183,7 @@ public class MovieInfo {
                 this.Directors.add(e.getChildText("name"));
         } catch (Exception e) {}
 
+
         try {
             String[] genres = root.getChild("genre").getText().split(" ");
             for (int n = 0; n < genres.length; n++)
@@ -124,7 +213,7 @@ public class MovieInfo {
 
     public String CombineProperties(List<String> property) {
         String result = "";
-        for (String s: property) result += ("," + s);
+        for (String s: property) result += ("," + s.replace("\n",""));
         try {
             if (result.startsWith(",")) result = result.substring(1);
         }
@@ -132,6 +221,13 @@ public class MovieInfo {
         finally {
             return result;
         }
+    }
+
+    public List<String> SplitProperties(String property) {
+        List<String> result = new ArrayList<String>();
+        String[] p = property.split(",");
+        for (int n = 0; n < p.length; n++) result.add(p[n].replace("\n", ""));
+        return result;
     }
 
 
