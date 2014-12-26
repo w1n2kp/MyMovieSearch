@@ -50,8 +50,8 @@ public class IndexUpdater extends HttpServlet {
 
         PrintWriter out = response.getWriter();
 
-        String library_path = request.getServletContext().getAttribute("library_path").toString();
-        String index_path = request.getServletContext().getAttribute("index_path").toString();
+        String library_path = request.getServletContext().getInitParameter("library_path").toString();
+        String index_path = request.getServletContext().getInitParameter("index_path").toString();
 
         directory = FSDirectory.open(new File(index_path));
         analyzer = new SmartChineseAnalyzer(Version.LATEST);

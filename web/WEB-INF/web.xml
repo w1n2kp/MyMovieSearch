@@ -9,4 +9,25 @@
         <res-type>javax.sql.DataSource</res-type>
         <res-auth>Container</res-auth>
     </resource-ref>
+
+    <context-param>
+        <param-name>save_path</param-name>
+        <param-value>/tmp</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>index_path</param-name>
+        <param-value>/tmp/movie.idx</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>library_path</param-name>
+        <param-value>/Users/vzhang/Downloads/nfo</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>connection_string</param-name>
+        <param-value>jdbc:mysql://192.168.1.1:3306/MovieSearch?user=sa&amp;password=9Qt5mhlx&amp;useUnicode=true&amp;characterEncoding=UTF8</param-value>
+    </context-param>
+
 </web-app>

@@ -31,8 +31,6 @@ import java.util.List;
 public class MovieSearcher extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    private String INDEX_PATH = "";
-
     private Directory directory = null;
     private Analyzer analyzer = null;
     private IndexSearcher searcher = null;
@@ -45,14 +43,6 @@ public class MovieSearcher extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-    /**
-     * @see javax.servlet.Servlet#init(ServletConfig)
-     */
-    public void init(ServletConfig config) throws ServletException {
-        // TODO Auto-generated method stub
-
-        INDEX_PATH = config.getServletContext().getAttribute("index_path").toString();
-    }
 
     /**
      * @see Servlet#destroy()
@@ -66,7 +56,6 @@ public class MovieSearcher extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         // TODO Auto-generated method stub
         response.setContentType("text/html; charset=utf-8");
         response.setCharacterEncoding("utf-8");
@@ -74,7 +63,8 @@ public class MovieSearcher extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         try {
-            directory = FSDirectory.open(new File(INDEX_PATH));
+            String indexPath = request.getServletContext().getInitParameter("index_path");
+            directory = FSDirectory.open(new File(indexPath));
         } catch (IOException e) {
             e.printStackTrace();
         }

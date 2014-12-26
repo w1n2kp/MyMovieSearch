@@ -29,15 +29,14 @@ public class MovieImporter extends HttpServlet {
 
         PrintWriter out = response.getWriter();
 
-        String library_path = request.getServletContext().getAttribute("library_path").toString();
-        connectionString = request.getServletContext().getAttribute("connection_string").toString();
+        String library_path = request.getServletContext().getInitParameter("library_path").toString();
+        connectionString = request.getServletContext().getInitParameter("connection_string").toString();
 
         // Begin search files
         try {
             fileCount = 0;
             findFiles(library_path, out);
         } catch (Exception e) {
-            e.printStackTrace();
             e.printStackTrace(out);
         }
 

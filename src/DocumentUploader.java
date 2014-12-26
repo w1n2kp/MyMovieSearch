@@ -1,3 +1,4 @@
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,7 +23,10 @@ import org.apache.tika.sax.BodyContentHandler;
  */
 @WebServlet (name = "DocumentUploader", urlPatterns = "/upload.do")
 public class DocumentUploader extends HttpServlet {
+
     protected void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String savePath =  request.getServletContext().getInitParameter("save_path").toString();
+
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html; charset=utf-8");
         PrintWriter out = response.getWriter();
@@ -36,8 +40,7 @@ public class DocumentUploader extends HttpServlet {
                 FileItem item = (FileItem)iterator.next();
                 if (!item.isFormField()) {
                     if ((item.getName() != null) && (item.getName() != "")) {
-                        String filename = request.getServletContext().getAttribute("save_path").toString() + "/" +
-                                item.getName();
+                        String filename = savePath + "/" + item.getName();
 
                         File file = new File(filename);
                         item.write(file);

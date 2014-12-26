@@ -12,7 +12,7 @@
 </head>
 <body>
   <h1>Upload a file extract text content and metadata</h1>
-  <form id="file1" enctype="multipart/form-data" method="post" action="/upload.do">
+  <form id="file1" enctype="multipart/form-data" method="post" action="upload.do">
     <input type="file" name="file1"/>
     <input type="submit" value="上传"/>
   </form>

@@ -39,7 +39,7 @@ public class PosterViewer extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
-        String index_path = request.getServletContext().getAttribute("index_path").toString();
+        String index_path = request.getServletContext().getInitParameter("index_path").toString();
 
         try {
             directory = FSDirectory.open(new File(index_path));
