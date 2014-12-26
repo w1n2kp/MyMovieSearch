@@ -18,7 +18,7 @@ import java.io.IOException;
 /**
  * Servlet implementation class PosterViewer
  */
-@WebServlet("/poster.do")
+@WebServlet(name = "PosterViewer", urlPatterns = "/poster.do")
 public class PosterViewer extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

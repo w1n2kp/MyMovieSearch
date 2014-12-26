@@ -23,7 +23,7 @@ import java.io.PrintWriter;
 /**
  * Servlet implementation class IndexUpdater
  */
-@WebServlet("/index.do")
+@WebServlet(name = "IndexUpdater", urlPatterns = "/index.do")
 public class IndexUpdater extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

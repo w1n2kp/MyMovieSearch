@@ -27,7 +27,7 @@ import java.util.List;
 /**
  * Servlet implementation class MovieSearcher
  */
-@WebServlet("/search.do")
+@WebServlet(name="IndexSearcher", urlPatterns = "/search.do")
 public class MovieSearcher extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -46,7 +46,7 @@ public class MovieSearcher extends HttpServlet {
     }
 
     /**
-     * @see Servlet#init(ServletConfig)
+     * @see javax.servlet.Servlet#init(ServletConfig)
      */
     public void init(ServletConfig config) throws ServletException {
         // TODO Auto-generated method stub
@@ -57,6 +57,7 @@ public class MovieSearcher extends HttpServlet {
     /**
      * @see Servlet#destroy()
      */
+    @Override
     public void destroy() {
         // TODO Auto-generated method stub
     }

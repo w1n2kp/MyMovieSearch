@@ -12,6 +12,9 @@
           <element id="library" level="application" name="lucene-4.10.2" />
           <element id="library" level="application" name="mysql-connector-java-5.1" />
           <element id="library" level="application" name="json-lib" />
+          <element id="library" level="application" name="org.apache.tika:tika-java7:1.6" />
+          <element id="library" level="application" name="apache-commons-fileupload-1.3" />
+          <element id="library" level="application" name="commons-io-2" />
         </element>
       </element>
     </root>
